@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, View, StyleSheet, Switch, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { ScrollView, View, StyleSheet, Switch, Text, TextInput, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -31,15 +31,15 @@ export default function OrphanageData() {
   async function handleCreateOrphanage() {
     const { latitude, longitude } = params.position;
 
-    console.log({
-      name,
-      latitude,
-      longitude,
-      about,
-      instructions,
-      opening_hours,
-      open_on_weekends,
-    })
+    // console.log({
+    //   name,
+    //   latitude,
+    //   longitude,
+    //   about,
+    //   instructions,
+    //   opening_hours,
+    //   open_on_weekends,
+    // })
 
     const data = new FormData();
 
@@ -89,6 +89,14 @@ export default function OrphanageData() {
 
 
   return (
+    <KeyboardAvoidingView  
+      style={{ flex: 1, 
+               flexDirection: 'column',
+               justifyContent: 'center',
+              }} 
+      behavior="padding" 
+      keyboardVerticalOffset={100} 
+    >
     <ScrollView style={styles.container} contentContainerStyle={{ padding: 24 }}>
       <Text style={styles.title}>Dados</Text>
 
@@ -161,6 +169,7 @@ export default function OrphanageData() {
         <Text style={styles.nextButtonText}>Cadastrar</Text>
       </RectButton>
     </ScrollView>
+    </KeyboardAvoidingView>
   )
 }
 
